@@ -26,8 +26,12 @@ require 'random_data'
      post: posts.sample,
      body: RandomData.random_paragraph
    )
- end
+end
 
- puts "Seed finished"
- puts "#{Post.count} posts created"
- puts "#{Comment.count} comments created"
+puts "#{Post.count}"
+Post.find_or_create_by(title: "My unique title", body: "A unique body")
+puts "#{Post.count}"
+
+puts "Seed finished"
+puts "#{Post.count} posts created"
+puts "#{Comment.count} comments created"
