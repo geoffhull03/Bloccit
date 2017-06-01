@@ -36,7 +36,9 @@ group :production do
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'pry-rails', :group => :development
 end
+
 
 group :development, :test do
    gem 'rspec-rails', '~> 3.0'
