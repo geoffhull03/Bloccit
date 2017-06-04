@@ -28,6 +28,14 @@ require 'random_data'
    )
 end
 
+100.times do
+  Question.create!(
+    title: RandomData.random_sentence,
+    body: RandomData.random_paragraph,
+    resolved: false
+  )
+end
+
 puts "#{Post.count}"
 Post.find_or_create_by(title: "My unique title", body: "A unique body")
 puts "#{Post.count}"
