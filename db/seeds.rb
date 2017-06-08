@@ -7,19 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'random_data'
 
- # Create Posts
+15.times do
+   Topic.create!(
+     name:         RandomData.random_sentence,
+     description:  RandomData.random_paragraph
+   )
+ end
+ topics = Topic.all
+
  50.times do
- # #1
    Post.create!(
- # #2
+     topic:  topics.sample,
      title:  RandomData.random_sentence,
      body:   RandomData.random_paragraph
    )
  end
  posts = Post.all
 
- # Create Comments
- # #3
  100.times do
    Comment.create!(
  # #4
@@ -41,5 +45,6 @@ Post.find_or_create_by(title: "My unique title", body: "A unique body")
 puts "#{Post.count}"
 
 puts "Seed finished"
+puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"

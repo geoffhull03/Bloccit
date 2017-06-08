@@ -37,6 +37,7 @@ group :production do
 group :development, :test do
   gem 'sqlite3'
   gem 'pry-rails', :group => :development
+  gem 'shoulda'
 end
 
 
