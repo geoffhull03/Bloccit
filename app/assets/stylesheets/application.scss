@@ -15,4 +15,12 @@
  */
 
  @import "bootstrap-sprockets";
- @import "bootstrap"; 
+ @import "bootstrap";
+
+.nav {
+  margin-top: 5px;
+}
+
+.nav > li:last-child {
+  float: right;
+}
