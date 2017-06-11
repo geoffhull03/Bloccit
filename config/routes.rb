@@ -7,6 +7,7 @@ Rails.application.routes.draw do
    end
   resources :sponsored_post
   resources :users, only: [:new, :create]
+  post 'users/confirm' => 'users#confirm'
   get 'about' => 'welcome#about'
 
   get 'welcome/contact'
