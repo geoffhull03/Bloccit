@@ -7,6 +7,7 @@ Rails.application.routes.draw do
    end
   resources :sponsored_post
   resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
   get 'about' => 'welcome#about'
 
   get 'welcome/contact'
