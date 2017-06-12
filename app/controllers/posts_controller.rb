@@ -30,13 +30,13 @@ class PostsController < ApplicationController
   end
 
   def update
-     @topic = Topic.find params[:topic_id]
-     @post.assign_attributes(post_params)
-     @post.body = params[:post][:body]
+    @post = Post.find(params[:id])
+    @post.title = params[:post][:title]
+    @post.body = params[:post][:body]
 
      if @post.save
        flash[:notice] = "Post was updated."
-       redirect_to topic_post_path(@topic, @post)
+       redirect_to [@post.topic, @post]
      else
        flash.now[:alert] = "There was an error saving the post. Please try again."
        render :edit
