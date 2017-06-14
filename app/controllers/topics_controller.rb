@@ -26,22 +26,32 @@ before_action :authorize_user, except: [:index, :show]
   end
 
   def edit
-    @topic = Topic.find(params[:id])
+   unless current_user.admin? || current_user.moderator?
+     flash[:alert] = "You must be an admin or moderator to do that."
+     redirect_to topics_path
+   else
+     @topic = Topic.find(params[:id])
+   end
   end
 
-  def update
-    @topic = Topic.find(params[:id])
+ def update
+   unless current_user.admin? || current_user.moderator?
+     flash[:alert] = "You must be an admin or moderator to do that."
+     redirect_to topics_path
+   else
+     @topic = Topic.find(params[:id])
 
-    @topic.assign_attributes(topic_params)
+     @topic.assign_attributes(topic_params)
 
-    if @topic.save
-      flash[:notice] = "Topic was updated."
-      redirect_to @topic
-    else
-      flash.now[:alert] = "Error saving topic. Please try again."
-      render :edit
-    end
-  end
+     if @topic.save
+       flash[:notice] = "Topic was updated."
+       redirect_to @topic
+     else
+       flash.now[:alert] = "Error saving topic. Please try again."
+       render :edit
+     end
+   end
+ end
 
   def destroy
     @topic = Topic.find(params[:id])
