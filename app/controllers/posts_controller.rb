@@ -32,9 +32,10 @@ class PostsController < ApplicationController
   end
 
   def update
-    @topic = Topic.find params[:topic_id]
-    @post.assign_attributes(post_params)
+    @post = Post.find(params[:id])
     @post.body = params[:post][:body]
+    @post.assign_attributes(post_params)
+
 
     if @post.save
       flash[:notice] = "Post was updated."
