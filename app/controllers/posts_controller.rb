@@ -32,6 +32,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     @post.body = params[:post][:body]
     @post.assign_attributes(post_params)
