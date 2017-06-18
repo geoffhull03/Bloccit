@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
+  let(:topic) { create(:topic) }
+  let(:user) { create(:user) }
+  let(:post) { create(:post) }
 
    it { is_expected.to have_many(:comments) }
    it { is_expected.to have_many(:votes) }
@@ -37,7 +40,7 @@ RSpec.describe Post, type: :model do
 
      describe "attributes" do
        it "has a title, body, and user attribute" do
-       expect(post).to have_attributes(title: title, body: body, user: user)
+         expect(post).to have_attributes(title: post.title, body: post.body, user: user)
        end
      end
 

@@ -54,16 +54,16 @@ RSpec.describe QuestionsController, type: :controller do
     describe "POST create" do
 
       it "increases the number of Question by 1" do
-        expect{post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph}}.to change(Question,:count).by(1)
+        expect{post :create, params: {question: {title: RandomData.random_sentence, body: RandomData.random_paragraph}}}.to change(Question,:count).by(1)
       end
 
       it "assigns the new question to @question" do
-        post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
+        post :create, params: {question: {title: RandomData.random_sentence, body: RandomData.random_paragraph}}
         expect(assigns(:question)).to eq Question.last
       end
 
       it "redirects to the new question" do
-        post :create, question: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
+        post :create, params: {question: {title: RandomData.random_sentence, body: RandomData.random_paragraph}}
         expect(response).to redirect_to Question.last
       end
     end
@@ -94,7 +94,7 @@ RSpec.describe QuestionsController, type: :controller do
         new_title = RandomData.random_sentence
         new_body = RandomData.random_paragraph
 
-        put :update, id: my_question.id, question: {title: new_title, body: new_body}
+        put :update, params: {id: my_question.id, question: {title: new_title, body: new_body}}
 
         updated_question = assigns(:question)
         expect(updated_question.id).to eq my_question.id
@@ -105,7 +105,7 @@ RSpec.describe QuestionsController, type: :controller do
       it "redirects to the updated post" do
         new_title = RandomData.random_sentence
         new_body = RandomData.random_paragraph
-        put :update, id: my_question.id, question: {title: new_title, body: new_body}
+        put :update, params: {id: my_question.id, question: {title: new_title, body: new_body} }
         expect(response).to redirect_to my_question
       end
     end

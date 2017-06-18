@@ -47,7 +47,7 @@ end
 
 gem 'bcrypt'
 gem 'figaro', '1.0'
-
+gem 'factory_girl_rails', '~> 4.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
